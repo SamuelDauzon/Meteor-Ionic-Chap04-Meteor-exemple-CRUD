@@ -1,0 +1,31 @@
+<body>
+  {{>ajouterMessage}}
+  {{>listerMessages}}
+</body>
+
+<template name="ajouterMessage">
+  <form>
+    Nouveau message:
+    <textarea name="message" cols="50" rows="5"></textarea>
+    <br />
+    <input type="submit" value="Envoyer" />
+  </form>
+</template>
+
+<template name="listerMessages">
+  {{#each messages}}
+    <hr />
+    <p>
+      <strong>Envoyé le {{ dateEnvoi }}</strong>
+      <form name="modifierMessage">
+        <textarea name="message">{{ message }}</textarea>
+        <input type="hidden" name="_id" value="{{ _id }}" />
+        <input type="submit" value="Modifier" />
+      </form>
+      <form name="supprimerMessage">
+        <input type="hidden" name="_id" value="{{ _id }}" />
+        <input type="submit" value="Supprimer" />
+      </form>
+    </p>
+  {{/each}}
+</template>
